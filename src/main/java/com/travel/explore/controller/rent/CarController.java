@@ -50,7 +50,7 @@ public class CarController {
 
     @PostMapping(value = "addAction")
     public CarEntity addAction(@RequestBody CarEntity body) {
-        carRepo.save(body);
+        carService.addAction(body);
         return body;
     }
 
@@ -66,7 +66,7 @@ public class CarController {
 
     @GetMapping(value = "getAll")
     public List<CarEntity> getList() {
-        return carRepo.findAll();
+        return carService.getAll();
     }
 
     // @GetMapping(value = "getById")
@@ -82,7 +82,7 @@ public class CarController {
 
     @GetMapping(value = "getById")
     public CarEntity getById(@RequestParam int id) {
-        return carRepo.findById(id).get();
+        return carService.getById(id);
     }
 
     // @PostMapping(value = "updateAction")
@@ -99,7 +99,7 @@ public class CarController {
 
     @PostMapping(value = "updateAction")
     public CarEntity updateAction(@RequestBody CarEntity body) {
-        return carRepo.save(body);
+        return carService.updateAction(body);
     }
 
     // @PostMapping(value = "deleteAction")
@@ -116,7 +116,7 @@ public class CarController {
 
     @PostMapping(value = "deleteAction")
     public String deleteAction(@RequestParam int id) {
-        carRepo.deleteById(id);
+        carService.deleteById(id);
         return "Success delete Car id: " + id;
     }
 }
